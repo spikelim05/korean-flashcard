@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Korean Flashcards</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            background-color: #f4f4f4;
+            padding: 20px;
+        }
+        .card {
+            width: 300px;
+            height: 150px;
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+            font-weight: bold;
+            cursor: pointer;
+            margin: auto;
+        }
+        .button {
+            margin-top: 20px;
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+            border: none;
+            background-color: #007bff;
+            color: white;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Korean Flashcards</h1>
+    <div class="card" id="flashcard" onclick="toggleTranslation()">Click to Start</div>
+    <button class="button" onclick="nextCard()">Next</button>
+
+    <script>
+        const flashcards = [
+            { korean: "컴퓨터", english: "Computer" },
+            { korean: "창문", english: "Window" },
+            { korean: "가방", english: "Bag" },
+            { korean: "입", english: "Mouth" },
+            { korean: "엄마", english: "Mother" },
+            { korean: "발", english: "Foot" },
+            { korean: "남자", english: "Man" },
+            { korean: "냉장고", english: "Refrigerator" },
+            { korean: "공", english: "Ball" },
+            { korean: "밥", english: "Rice" },
+            { korean: "연필", english: "Pencil" },
+            { korean: "물", english: "Water" },
+            { korean: "우산", english: "Umbrella" },
+            { korean: "신문", english: "Newspaper" },
+            { korean: "옷", english: "Clothes" },
+            { korean: "책", english: "Book" },
+            { korean: "밑", english: "Bottom" },
+            { korean: "꽃", english: "Flower" },
+            { korean: "돈", english: "Money" },
+            { korean: "부엌", english: "Kitchen" }
+        ];
+        
+        let currentIndex = 0;
+        let showTranslation = false;
+
+        function toggleTranslation() {
+            const card = document.getElementById("flashcard");
+            if (showTranslation) {
+                card.textContent = flashcards[currentIndex].korean;
+            } else {
+                card.textContent = flashcards[currentIndex].english;
+            }
+            showTranslation = !showTranslation;
+        }
+
+        function nextCard() {
+            currentIndex = (currentIndex + 1) % flashcards.length;
+            showTranslation = false;
+            document.getElementById("flashcard").textContent = flashcards[currentIndex].korean;
+        }
+    </script>
+</body>
+</html>
